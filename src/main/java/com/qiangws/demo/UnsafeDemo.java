@@ -60,6 +60,16 @@ public class UnsafeDemo {
         public native void storeFence();
         //内存屏障，禁止load、store操作重排序
         public native void fullFence();
+
+
+        //获取给定地址值，忽略修饰限定符的访问限制。与此类似操作还有: getInt，getDouble，getLong，getChar等
+        public native Object getObject(Object o, long offset);
+        //为给定地址设置值，忽略修饰限定符的访问限制，与此类似操作还有: putInt,putDouble，putLong，putChar等
+        public native void putObject(Object o, long offset, Object x);
+        //获取给定地址的byte类型的值（当且仅当该内存地址为allocateMemory分配时，此方法结果为确定的）
+        public native byte getByte(long address);
+        //为给定地址设置byte类型的值（当且仅当该内存地址为allocateMemory分配时，此方法结果才是确定的）
+        public native void putByte(long address, byte x);
     */
     public static Unsafe reflectGetUnsafe() {
         try {
@@ -72,4 +82,6 @@ public class UnsafeDemo {
         }
         return null;
     }
+    
 }
+

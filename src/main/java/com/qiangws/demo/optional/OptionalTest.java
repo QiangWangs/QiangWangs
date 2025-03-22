@@ -19,8 +19,54 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class OptionalTest {
 
 
+    /**
+     * ‌创建Optional对象‌：
+     *
+     * Optional.of(T value)：创建一个包含给定值的Optional对象。如果值为null，则抛出NullPointerException。
+     * Optional.empty()：创建一个空的Optional对象。
+     * Optional.ofNullable(T value)：创建一个可能包含给定值的Optional对象。如果值为null，则创建一个空的Optional对象。
+     * ‌获取值‌：
+     *
+     * get()：如果值存在，则返回该值，否则抛出NoSuchElementException。
+     * orElse(T other)：如果值存在，则返回该值，否则返回一个默认值。
+     * orElseGet(Supplier<? extends T> other)：如果值存在，则返回该值，否则通过调用提供的Supplier函数获取默认值。
+     * orElseThrow(Supplier<? extends X> exceptionSupplier)：如果值存在，则返回该值，否则抛出一个由提供的Supplier生成的异常。
+     * ‌判断值是否存在‌：
+     *
+     * isPresent()：如果值存在，则返回true，否则返回false。
+     * ifPresent(Consumer<? super T> consumer)：如果值存在，则执行给定的操作。
+     * ‌转换和映射‌：
+     *
+     * map(Function<? super T, ? extends U> mapper)：如果值存在，则对其应用给定的函数，并返回一个新的Optional对象，该对象包含应用函数后的结果。如果原始Optional对象为空，则返回一个新的空Optional对象。
+     * flatMap(Function<? super T, Optional<U>> mapper)：与map类似，但映射函数必须返回一个Optional对象。然后，结果将是一个Optional的Optional，但会被“扁平化”为一个Optional。
+     * ‌过滤‌：
+     *
+     * filter(Predicate<? super T> predicate)：如果值存在并且满足给定的谓词条件，则返回一个包含该值的Optional对象；否则返回一个空的Optional对象。
+     * @param args
+     */
     public static void main(String[] args) {
-        optional();
+        // 创建一个Optional对象
+        Optional<String> optionalString = Optional.ofNullable("Hello, Optional!");
+
+        System.out.println(optionalString.orElseGet(()->"Default"));
+        // 判断值是否存在
+        if (optionalString.isPresent()) {
+            System.out.println(optionalString.get());
+        }
+
+        // 使用orElse获取值
+        String valueOrDefault = optionalString.orElse("Default value");
+        System.out.println(valueOrDefault);
+
+        // 使用map进行转换
+        Optional<Integer> optionalLength = optionalString.map(String::length);
+        optionalLength.ifPresent(System.out::println);
+
+        // 使用filter进行过滤
+        Optional<String> filteredOptional = optionalString.filter(s -> s.contains("Optional"));
+        filteredOptional.ifPresent(System.out::println);
+
+        //optional();
     }
 
     private static void optional(){
