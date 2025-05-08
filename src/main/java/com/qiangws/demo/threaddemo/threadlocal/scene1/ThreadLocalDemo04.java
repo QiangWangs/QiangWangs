@@ -17,29 +17,29 @@ public class ThreadLocalDemo04 {
     public static void main(String[] args) throws InterruptedException {
 
 
-        String ii = "1,2,3,5";
+//        String ii = "1,2,3,5";
+//
+//String a = "1,2,3,4,56,,,,7,8,,8,";
+//
+//        System.out.println(ii.concat(a));
+//        String s = a.replaceAll("\\,+", ",");
+//        System.out.println(s);
+//
+//        List<String> as =new ArrayList<>();
+//        as.add("1");as.add("s1");
+//
+//        List<String> list2 =
+//                as.stream().map(data -> {
+//                    ArrayList<String> b = new ArrayList<String>();
+//                    b.add("a"); b.add("a"); b.add("a");
+//                    return b;
+//                }).collect(Collectors.toList())
+//                        .stream().flatMap(Collection::stream).collect(Collectors.toList());
+//        System.out.println(list2);
+//
+//        String av =(String)null;
 
-String a = "1,2,3,4,56,,,,7,8,,8,";
-
-        System.out.println(ii.concat(a));
-        String s = a.replaceAll("\\,+", ",");
-        System.out.println(s);
-
-        List<String> as =new ArrayList<>();
-        as.add("1");as.add("s1");
-
-        List<String> list2 =
-                as.stream().map(data -> {
-                    ArrayList<String> b = new ArrayList<String>();
-                    b.add("a"); b.add("a"); b.add("a");
-                    return b;
-                }).collect(Collectors.toList())
-                        .stream().flatMap(Collection::stream).collect(Collectors.toList());
-        System.out.println(list2);
-
-        String av =(String)null;
-
-       /* for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1000; i++) {
             int s = i;
             threadPool.submit(()->{
                 Date date = new Date(1000*s);
@@ -48,6 +48,6 @@ String a = "1,2,3,4,56,,,,7,8,,8,";
                 System.out.println(data);
             });
         }
-        threadPool.shutdown();*/
+        threadPool.shutdown();
     }
 }

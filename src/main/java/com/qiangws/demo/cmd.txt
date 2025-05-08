@@ -1,0 +1,2 @@
+netstat -ano|findstr 端口id
+taskkill /f /pid 进程id
